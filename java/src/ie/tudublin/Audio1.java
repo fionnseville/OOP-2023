@@ -100,7 +100,23 @@ public class Audio1 extends PApplet
                         float f = ab.get(i) * halfH;
                         line(i, halfH + f, halfH-f, i);                    
                     }
-                break;            
+                break;        
+            case 2:
+                background(0);
+                for(int i = 0 ; i < ab.size() ; i ++)
+                {
+                    //float c = map(ab.get(i), -1, 1, 0, 255);
+                    float c = map(i, 0, ab.size(), 0, 255);
+                    stroke(c, 255, 255);
+                    float f = ab.get(i) * halfH;
+                    line(i, height + f, i, height - f);//bottom     
+                    line(i, 0+f, i, 0-f);//top                    
+                    line(0, i, f, i );//left                    
+                    line(width, i , width- f, i );//right                    
+
+                }
+                break;
+
 
         }
         
