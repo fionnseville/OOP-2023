@@ -13,8 +13,7 @@ public class Audio1 extends PApplet
     AudioInput ai;
     AudioBuffer ab;
 
-    int mode = 0;
-
+    int mode = 0; 
     float y = 0;
     float smoothedY = 0;
     float smoothedAmplitude = 0;
@@ -43,13 +42,13 @@ public class Audio1 extends PApplet
     {
         minim = new Minim(this);
         // Uncomment this to use the microphone
-        // ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
-        // ab = ai.mix; 
+        ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
+        ab = ai.mix; 
 
         // And comment the next two lines out
-        ap = minim.loadFile("heroplanet.mp3", 1024);
-        ap.play();
-        ab = ap.mix;
+        //ap = minim.loadFile("heroplanet.mp3", 1024);
+        //ap.play();
+       // ab = ap.mix;
         colorMode(HSB);
 
         y = height / 2;
@@ -91,9 +90,17 @@ public class Audio1 extends PApplet
                     line(i, halfH + f, i, halfH - f);                    
                 }
                 break;
-        case 1:
-            background(0);            
-            break;
+            case 1:
+            background(0);
+                for(int i = 0 ; i < ab.size() ; i ++)
+                    {
+                        //float c = map(ab.get(i), -1, 1, 0, 255);
+                        float c = map(i, 0, ab.size(), 0, 255);
+                        stroke(c, 255, 255);
+                        float f = ab.get(i) * halfH;
+                        line(i, halfH + f, halfH-f, i);                    
+                    }
+                break;            
 
         }
         
