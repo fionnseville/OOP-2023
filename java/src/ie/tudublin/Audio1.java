@@ -123,6 +123,36 @@ public class Audio1 extends PApplet
                 circle(height/2,width/2,smoothedAmplitude*height);
                 noFill();
                 break;
+            case 4:
+                background(0);
+                //float c = map(i, 0, ab.size(), 0, 255);
+                stroke(smoothedAmplitude* 255, 255, 255);
+                rectMode(CENTER);
+                square(height/2,width/2,smoothedAmplitude*height);
+                noFill();
+                break;
+            case 5:
+                background(0);
+                for(int i = 0 ; i < ab.size() ; i ++)
+                    {
+                        //float c = map(ab.get(i), -1, 1, 0, 255);
+                        float c = map(i, 0, ab.size(), 0, 255);
+                        stroke(c, 255, 255);
+                        float f = ab.get(i) * halfH;
+                        line(i, height + f, i, height - f);//bottom     
+                        line(i, 0+f, i, 0-f);//top                    
+                        line(0, i, f, i );//left                    
+                        line(width, i , width- f, i );//right    
+                        rect(i, halfH + f, halfH-f, i);    
+                        stroke(smoothedAmplitude* 255, 255, 255);
+                        rectMode(CENTER);
+                        //square(height/2,width/2,smoothedAmplitude*height);
+                        noFill();       
+                        stroke(smoothedAmplitude* 255, 255, 255);
+                        //circle(height/2,width/2,smoothedAmplitude*height);
+                        noFill();          
+                    }
+                break;        
 
         }
         
