@@ -116,7 +116,13 @@ public class Audio1 extends PApplet
 
                 }
                 break;
-
+            case 3:
+                background(0);
+                //float c = map(i, 0, ab.size(), 0, 255);
+                stroke(smoothedAmplitude* 255, 255, 255);
+                circle(height/2,width/2,smoothedAmplitude*height);
+                noFill();
+                break;
 
         }
         
